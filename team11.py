@@ -12,23 +12,23 @@ strategy_name = 'The name the team gives to this strategy'
 strategy_description = 'How does this strategy decide?'
     
 def move(my_history, their_history, my_score, their_score):
-    x = 0
-    if len(my_history)<5: # It's the first round; collude.
-        return 'c'
-    if len(my_history)>5: # It's the first round; collude.
-        return 'c'
-    if their_history == 'ccc':
-        return 'b' and x + 1 # Betray if they were severely punished last time,
-    if their_history == 'bbb':
-        return 'b' # Betray if they were severely punished last time,
-    if their_history == 'BBB':
-        return 'b' # Betray if they were severely punished last time,
-    ''' Arguments accepted: my_history, their_history are strings.
-    my_score, their_score are ints.
     
-    Make my move.
-    Returns 'c' or 'b'. 
-    '''
+    opponents_last_5moves = their_history[-1:5]
+    
+    if len(my_history)<= 5:
+        return 'c'
+    
+    if opponents_last_5moves == 'bbbbb':
+        return 'bbbbb'
+    
+    if opponents_last_5moves == 'ccccc':
+        return 'bbbbb' 
+        
+    if opponents_last_5moves == 'cbcbc':
+        return 'cbcbc'
+  
+  
+
 
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
