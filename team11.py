@@ -15,12 +15,15 @@ def move(my_history, their_history, my_score, their_score):
     
     opponents_last_5moves = their_history[-1:5]
     
-    if len(my_history)== 0:
-        return 'b'
+    if len(their_history)>= 5:
+        if (their_history)== 'bbb':
+            return 'b'
+    
+    if len(their_history)>= 5:
+        if (their_history)== 'ccc':
+            return 'b'
         
-    if len(my_history)== 1:
-        return 'b'
-    else:
+    if len(my_history)<= 5:
         return 'c'
     
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
