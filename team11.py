@@ -21,14 +21,6 @@ def move(my_history, their_history, my_score, their_score):
     else: 
         return 'c'
     
-    if len(their_history)>= 5:
-        if (their_history)== 'ccc':
-            return 'b'
-    else: 
-        return 'c'
-        
-    if len(my_history)<= 5:
-        return 'c'
     
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
