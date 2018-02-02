@@ -20,12 +20,6 @@ def move(my_history, their_history, my_score, their_score):
         
     if len(my_history)== 1:
         return 'b'
-    
-    if (my_history)<=5: 
-        if len(their_history)%2 == 0:
-            return 'c'
-        else:
-            return 'b'
     else:
         return 'c'
     
