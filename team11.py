@@ -15,7 +15,7 @@ def move(my_history, their_history, my_score, their_score):
     
     opponents_last_5moves = their_history[-1:5]
     
-    if len(their_history)>= 5:
+    if len(their_history)>= 3:
         if (their_history)== 'bbb':
             return 'b'
     else: 
