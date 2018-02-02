@@ -21,7 +21,7 @@ def move(my_history, their_history, my_score, their_score):
     
 def opponents_last_5moves():
     if 1==1:
-        their_history[-1:5]
+        return move[-1:5]
            
     
 def test_move(my_history, their_history, my_score, their_score, result):
