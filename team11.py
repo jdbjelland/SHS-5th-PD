@@ -23,15 +23,13 @@ def move(my_history, their_history, my_score, their_score):
     
     if opponents_last_5moves == 'c':
         return 'b' 
-        
-    if opponents_last_5moves == 'cbcbc':
-        return 'bcbcb'
   
-    if len(my_history)<= 5:
+    if len(my_history)== 5:
         if opponents_last_5moves == 'b':
             return 'b'
         elif opponents_last_5moves == 'c':
             return 'b'
+    return 'c'
     
 
 
