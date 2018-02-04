@@ -9,7 +9,9 @@
 team_name = 'Domination' # Only 10 chars displayed.
 strategy_name = 'The name the team gives to this strategy'
 strategy_description = 'How does this strategy decide?'
-    
+
+import random
+        
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
@@ -26,14 +28,24 @@ def move(my_history, their_history, my_score, their_score):
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
     
-    if len(my_history)<3:
-        return 'c'
-    elif 'bbb' in their_history:
+    if len(my_history)==1 and their_history[-1] == 'b':
         return 'b'
-    elif 'ccc' in their_history:
-        if 
-        elif my_history[-1]=='c' and their_history[-1]=='b':
+    elif len(my_history)<3:
+        return 'c' 
+    elif 'bbb' in their_history or 'b' in their_history[-2:]:
+        return 'b'
+    elif 'ccc' in their_history and their_history<=100 and not 'b' in their_history:
+        return 'c'        
+    elif 'ccc' in their_history and their_history>100:
+        if 'b' in their_history: 
             return 'b'
+        elif random.random()<0.1: # 10% of the other rounds
+            return 'b'         # Betray
+        else:
+            return 'c'
+            
+    elif my_history[-1]=='c' and their_history[-1]=='b':
+        return 'b'
     else:
         return 'b'            
         
@@ -61,7 +73,7 @@ if __name__ == '__main__':
               their_history='', 
               my_score=0,
               their_score=0,
-              result='b'):
+              result='c'):
          print 'Test passed'
      # Test 2: Continue betraying if they collude despite being betrayed.
     test_move(my_history='bbb',
@@ -74,4 +86,4 @@ if __name__ == '__main__':
               # move('bbb', 'ccc', 0, 0) returns 'b'.
               my_score=0, 
               their_score=0,
-              result='b')             
+              result='c')             
