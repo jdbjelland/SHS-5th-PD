@@ -7,8 +7,8 @@
 ####
 
 team_name = "It's Everyday BRO! With that disney channel flow" # Only 10 chars displayed.
-strategy_name = 'Collude first two round, then continue to collude or betray'
-strategy_description = 'How does this strategy decide?'
+strategy_name = 'WINNING EVERYDAY BRO'
+strategy_description = 'Collude first two round, and if the oppenent betrays and we collude, always collude up to 3 rounds. If not, copy oppenents from the last 2 round'
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
