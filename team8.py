@@ -7,8 +7,8 @@
 ####
 
 team_name = 'Forks' # Only 10 chars displayed.
-strategy_name = '50/50 revenge'
-strategy_description = '50/50 chance of C or B, Always B the round after other player goes B.'
+strategy_name = 'collude until betray, early round determines rest of game.'
+strategy_description = 'Betray first round, collude until they betray, betray rest of game if they betrayed on both rounds 1 & 2'
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -25,8 +25,24 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    
-    return 'c'
+    if len(my_history)==0: #first round collude.
+        return 'c'
+    else:
+        if len(my_history)==1: #second round Betray.
+            return 'b'
+        else:   
+            if 'bb' in their_history[1:2]: #if they betrayed the first two rounds, then betray every round
+                return 'b'
+            else:
+                if 'cc' in their_history: #if they collude twice in  a row, then betray
+                    return 'b'
+                else:
+                    if their_history[-1]=='c': #if they colluded last round then collude
+                        return 'c'
+                    else:
+                        if their_history[-1]=='b': #if they betrayed last round then betray
+                            return 'b'
+                    
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
