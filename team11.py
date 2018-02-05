@@ -1,4 +1,3 @@
-import random
 ####
 # Each team's file must define four tokens:
 #     team_name: a string
@@ -12,18 +11,16 @@ strategy_name = 'The name the team gives to this strategy'
 strategy_description = 'How does this strategy decide?'
     
 def move(my_history, their_history, my_score, their_score):
-        
-    if len(their_history)>= 3:
-        if (their_history)== 'bbb':
-            return 'b'
-    else: 
+  
+    if their_history<= 10:
+        return 'c'
+    else:
         return 'b'
-    
-def opponents_last_5moves():
-    if 1==1:
-        return move
-           
-    
+        
+def oponentslast5moves():
+    if move== 'c':
+        return 'b'
+        
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
