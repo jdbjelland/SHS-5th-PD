@@ -8,7 +8,7 @@
 
 team_name = 'Domination' # Only 10 chars displayed.
 strategy_name = 'Example Dominator'
-strategy_description = 'How does this strategy decide?'
+strategy_description = 'It looks in the history of all examples and will dominate all the examples'
         
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
