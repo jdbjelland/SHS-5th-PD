@@ -38,7 +38,7 @@ def move(my_history, their_history, my_score, their_score):
         else:
             return 'b'
     #copy the opponents move
-    elif their_history[-1]=='c':
+    elif their_history[-2]=='c':
         return 'c'
     else:
         return 'b'
