@@ -1,3 +1,6 @@
+
+from __future__ import print_function
+
 ####
 # Each team's file must define four tokens:
 #     team_name: a string
@@ -7,8 +10,8 @@
 ####
 
 team_name = 'Cyberchase' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+strategy_name = 'CopyCat'
+strategy_description = 'For the first round it colludes then if the opponent betrayed in the last 10 moves then it will betray, otherwise it will copy the last move of the opponent'
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -17,18 +20,15 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
+    
+    if len(my_history) == 0: #first move = 'c'
+        return 'c'
+    elif 'b' in their_history[-10:]: # if 'b' in their last 10 moves then return 'b'
+        return 'b'
+    else:
+        return their_history[-1] #otherwise return opponent's last move
 
-    # my_history: a string with one letter (c or b) per round that has been played with this opponent.
-    # their_history: a string of the same length as history, possibly empty. 
-    # The first round between these two players is my_history[0] and their_history[0].
-    # The most recent round is my_history[-1] and their_history[-1].
-    
-    # Analyze my_history and their_history and/or my_score and their_score.
-    # Decide whether to return 'c' or 'b'.
-    
-    return 'c'
 
-    
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
@@ -47,22 +47,22 @@ def test_move(my_history, their_history, my_score, their_score, result):
 
 if __name__ == '__main__':
      
-    # Test 1: Betray on first move.
+    # Test 1: Collude on first move.
     if test_move(my_history='',
               their_history='', 
               my_score=0,
               their_score=0,
-              result='b'):
-         print 'Test passed'
-     # Test 2: Continue betraying if they collude despite being betrayed.
-    test_move(my_history='bbb',
+              result='c'):
+         print('Test passed')
+     # Test 2: Copy opponent's last move
+    test_move(my_history='ccc',
               their_history='ccc', 
-              # Note the scores are for testing move().
-              # The history and scores don't need to match unless
-              # that is relevant to the test of move(). Here,
-              # the simulation (if working correctly) would have awarded 
-              # 300 to me and -750 to them. This test will pass if and only if
-              # move('bbb', 'ccc', 0, 0) returns 'b'.
               my_score=0, 
               their_score=0,
-              result='b')             
+              result='c')  
+    #Test 3 if betray is in last opponent's 10 moves don't copy opponent's last move, betray instead
+    test_move(my_history= 'cbb', 
+            their_history= 'cbc', 
+              their_score=0,
+              my_score=0,
+              result='b')               
