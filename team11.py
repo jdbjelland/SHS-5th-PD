@@ -7,8 +7,8 @@
 ####
 
 team_name = 'Meeseeks' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+strategy_name = 'bait'
+strategy_description = 'This strategy baits there strategy then betrays the rest of the rounds.'
     
 def move(my_history, their_history, my_score, their_score):
   
