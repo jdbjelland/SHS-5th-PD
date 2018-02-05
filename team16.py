@@ -9,8 +9,6 @@
 team_name = 'Domination' # Only 10 chars displayed.
 strategy_name = 'Example Dominator'
 strategy_description = 'How does this strategy decide?'
-
-import random
         
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
